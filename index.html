@@ -8,16 +8,16 @@
 		<meta name="keywords" content="CoC, conquerors of cognitei, MoC, masters of cognitei">
 		<script type="text/javascript" src="js/cardGen.js"></script>
     </head>
-    <body onload="main();">
+    <body onload="previewDefault();">
 		<header>
 			Header text
 		</header>
 
 		<article class="main-block">
 			<div class="card-menu">
-				<form class="card-options">
+				<form id="card-options" class="card-options">
 					<label for="card-type">Тип:</label>
-					<select id="card-type" name="type">
+					<select id="card-type" name="type" onchange="typeofCard();">
 						<option value="Adventurer">Приключенец</option>
 						<option value="Action">Действие</option>
 						<option value="Preparation">Подготовка</option>
@@ -26,6 +26,10 @@
 						<option value="Artifact">Артефакт</option>
 						<option value="Patron">Покровитель</option>
 					</select>
+
+					<label for="card-name">Название:</label>
+					<input id="card-name" type="text"></input>
+
 					<button id="card-submit">Генерировать</button>
 				</form>
 			</div>
