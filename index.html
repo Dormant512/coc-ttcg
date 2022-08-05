@@ -6,18 +6,36 @@
         <meta charset="utf-8">
         <meta name="description" content="Сервис для редактирования и прототипирования карт CoC.">
 		<meta name="keywords" content="CoC, conquerors of cognitei, MoC, masters of cognitei">
+		<script type="text/javascript" src="js/cardGen.js"></script>
     </head>
-    <body>
+    <body onload="main();">
 		<header>
-
+			Header text
 		</header>
 
-		<article>
-		
+		<article class="main-block">
+			<div class="card-menu">
+				<form class="card-options">
+					<label for="card-type">Тип:</label>
+					<select id="card-type" name="type">
+						<option value="Adventurer">Приключенец</option>
+						<option value="Action">Действие</option>
+						<option value="Preparation">Подготовка</option>
+						<option value="Action-Preparation">Действие/Подготовка</option>
+						<option value="Plan">План</option>
+						<option value="Artifact">Артефакт</option>
+						<option value="Patron">Покровитель</option>
+					</select>
+					<button id="card-submit">Генерировать</button>
+				</form>
+			</div>
+			<canvas id="card-gen" width="496" height="693" style="border:1px solid #000000;">
+				Canvas is not supported by your browser
+			</canvas>
 		</article>
 
 		<footer>
-
+			Footer text
 		</footer>
 	</body>
 </html>

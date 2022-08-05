@@ -1,0 +1,12 @@
+body {
+	font-size: 1.2rem;
+}
+
+.main-block .card-menu {
+	display: inline-block;
+	outline: 1px solid red;
+}
+
+.main-block canvas {
+	display: inline-block;
+}
