@@ -7,6 +7,29 @@ body {
 	outline: 1px solid red;
 }
 
-.main-block canvas {
+.main-block .canvas-container {
 	display: inline-block;
+	position: absolute;
+	top: 100px;
+	left: 350px;
+}
+
+.main-block .canvas-container #card-gen-back {
+	z-index: 1;
+	position: absolute;
+}
+
+.main-block .canvas-container #card-gen-front {
+	z-index: 2;
+	position: absolute;
+}
+
+.main-block .canvas-container #card-gen-text {
+	z-index: 3;
+	position: absolute;
+}
+
+textarea {
+	resize: none;
+	overflow: hidden;
 }

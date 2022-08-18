@@ -8,7 +8,7 @@
 		<meta name="keywords" content="CoC, conquerors of cognitei, MoC, masters of cognitei">
 		<script type="text/javascript" src="js/cardGen.js"></script>
     </head>
-    <body onload="previewDefault();">
+    <body onload="typeEnable();">
 		<header>
 			Header text
 		</header>
@@ -16,26 +16,213 @@
 		<article class="main-block">
 			<div class="card-menu">
 				<form id="card-options" class="card-options">
+					<label for="is-unique">Уникальная:</label>
+					<input type="checkbox" id="is-unique" name="unique">
+					<br>
+					
 					<label for="card-type">Тип:</label>
-					<select id="card-type" name="type" onchange="typeofCard();">
-						<option value="Adventurer">Приключенец</option>
-						<option value="Action">Действие</option>
-						<option value="Preparation">Подготовка</option>
-						<option value="Action-Preparation">Действие/Подготовка</option>
-						<option value="Plan">План</option>
-						<option value="Artifact">Артефакт</option>
-						<option value="Patron">Покровитель</option>
+					<select id="card-type" name="type" onchange="typeEnable();">
+						<option value="adventurer">Приключенец</option>
+						<option value="action">Действие</option>
+						<option value="preparation">Подготовка</option>
+						<option value="action_preparation">Действие/Подготовка</option>
+						<option value="plan">План</option>
+						<option value="artifact">Артефакт</option>
+						<option value="patron">Покровитель</option>\
+						<option value="token">Фишка</option>
 					</select>
+
+					<br>
+
+					<label for="card-color-1">Цвет 1:</label>
+					<select id="card-color-1" name="color-1" onchange="syncColor();">
+						<option value="fighter">Воитель</option>
+						<option value="assassin">Убийца</option>
+						<option value="ranger">Рейнджер</option>
+						<option value="mage">Заклинатель</option>
+						<option value="support">Спаситель</option>
+						<option value="diplomat">Дипломат</option>
+						<option value="erudite">Эрудит</option>
+						<option value="priest">Послушник</option>
+						<option value="manipulator">Манипулятор</option>
+						<option value="artifact">Артефакт</option>
+						<option value="generic">Общий</option>
+					</select>
+
+					<br>
+
+					<label for="card-color-2">Цвет 2:</label>
+					<select id="card-color-2" name="color-2">
+						<option value="fighter">Воитель</option>
+						<option value="assassin">Убийца</option>
+						<option value="ranger">Рейнджер</option>
+						<option value="mage">Заклинатель</option>
+						<option value="support">Спаситель</option>
+						<option value="diplomat">Дипломат</option>
+						<option value="erudite">Эрудит</option>
+						<option value="priest">Послушник</option>
+						<option value="manipulator">Манипулятор</option>
+						<option value="artifact">Артефакт</option>
+						<option value="generic">Общий</option>
+					</select>
+
+					<br>
+
+					<div id="multi-magic-field" class="multi-magic-field">
+						<label for="multi-magic-1">Магия Порядка</label>
+						<input type="checkbox" id="multi-magic-1" name="order">
+						<br>
+
+						<label for="multi-magic-2">Магия Жизни</label>
+						<input type="checkbox" id="multi-magic-2" name="life">
+						<br>
+
+						<label for="multi-magic-3">Чистая Магия</label>
+						<input type="checkbox" id="multi-magic-3" name="pure">
+						<br>
+
+						<label for="multi-magic-4">Магия Воли</label>
+						<input type="checkbox" id="multi-magic-4" name="will">
+						<br>
+
+						<label for="multi-magic-5">Магия Хаоса</label>
+						<input type="checkbox" id="multi-magic-5" name="chaos">
+					</div>
+
+					<div id="mono-magic">
+						<label for="card-magic">Школа Магии:</label>
+						<select id="card-magic" name="mono-magic">
+							<option value="none">----------</option>
+							<option value="order">Магия Порядка</option>
+							<option value="life">Магия Жизни</option>
+							<option value="pure">Чистая Магия</option>
+							<option value="will">Магия Воли</option>
+							<option value="chaos">Магия Хаоса</option>
+						</select>
+					</div>
+
+					<div id="spec-field" class="spec-field">
+						<label for="spec-1">Специализация 1:</label>
+						<select id="spec-1" name="spec-1">
+							<option value="none">----------</option>
+							<option value="fighter">Воитель</option>
+							<option value="assassin">Убийца</option>
+							<option value="ranger">Рейнджер</option>
+							<option value="mage">Заклинатель</option>
+							<option value="support">Спаситель</option>
+							<option value="diplomat">Дипломат</option>
+							<option value="erudite">Эрудит</option>
+							<option value="priest">Послушник</option>
+							<option value="manipulator">Манипулятор</option>
+						</select>
+						<br>
+
+						<label for="card-or-1">1 или 2:</label>
+						<input type="checkbox" id="card-or-1" name="or-1">
+						<br>
+
+						<label for="spec-2">Специализация 2:</label>
+						<select id="spec-2" name="spec-2">
+							<option value="none">----------</option>
+							<option value="fighter">Воитель</option>
+							<option value="assassin">Убийца</option>
+							<option value="ranger">Рейнджер</option>
+							<option value="mage">Заклинатель</option>
+							<option value="support">Спаситель</option>
+							<option value="diplomat">Дипломат</option>
+							<option value="erudite">Эрудит</option>
+							<option value="priest">Послушник</option>
+							<option value="manipulator">Манипулятор</option>
+						</select>
+						<br>
+
+						<label for="card-or-2">2 или 3:</label>
+						<input type="checkbox" id="card-or-2" name="or-2">
+						<br>
+
+						<label for="spec-3">Специализация 3:</label>
+						<select id="spec-3" name="spec-3">
+							<option value="none">----------</option>
+							<option value="fighter">Воитель</option>
+							<option value="assassin">Убийца</option>
+							<option value="ranger">Рейнджер</option>
+							<option value="mage">Заклинатель</option>
+							<option value="support">Спаситель</option>
+							<option value="diplomat">Дипломат</option>
+							<option value="erudite">Эрудит</option>
+							<option value="priest">Послушник</option>
+							<option value="manipulator">Манипулятор</option>
+						</select>
+						<br>
+
+						<label for="card-or-3">3 или 4:</label>
+						<input type="checkbox" id="card-or-3" name="or-3">
+						<br>
+
+						<label for="spec-4">Специализация 4:</label>
+						<select id="spec-4" name="spec-4">
+							<option value="none">----------</option>
+							<option value="fighter">Воитель</option>
+							<option value="assassin">Убийца</option>
+							<option value="ranger">Рейнджер</option>
+							<option value="mage">Заклинатель</option>
+							<option value="support">Спаситель</option>
+							<option value="diplomat">Дипломат</option>
+							<option value="erudite">Эрудит</option>
+							<option value="priest">Послушник</option>
+							<option value="manipulator">Манипулятор</option>
+						</select>
+					</div>
 
 					<label for="card-name">Название:</label>
 					<input id="card-name" type="text"></input>
+					<br>
 
-					<button id="card-submit">Генерировать</button>
+					<div id="tribe-container">
+						<label for="card-tribe">Трайб:</label>
+						<input id="card-tribe" type="text"></input>
+					</div>
+					<br>
+
+					<div id="artifact-cost-container">
+						<label for="artifact-cost">Цена артефакта:</label>
+						<input id="artifact-cost" type="text"></input>
+					</div>
+					<br>
+
+					<div id="patron-affect-container">
+						<label for="patron-affect">Влияние:</label>
+						<input id="patron-affect" type="text"></input>
+					</div>
+					<br>
+
+					<div id="card-ap-container">
+						<label for="card-ap">ОД:</label>
+						<input id="card-ap" type="text"></input>
+					</div>
+					<br>
+
+					<div id="plan-trigger-container">
+						<label for="plan-trigger">Условие:</label>
+						<textarea id="plan-trigger" name="plan-trigger" rows="5"></textarea>
+					</div>
+					<br>
+					<!-- HERE HERE HERE HERE HERE HERE HERE HERE HERE -->
+
+					<button id="card-submit" type="button" onclick="modelCard();">Генерировать</button>
 				</form>
 			</div>
-			<canvas id="card-gen" width="496" height="693" style="border:1px solid #000000;">
-				Canvas is not supported by your browser
-			</canvas>
+
+			<div class="canvas-container">
+				<canvas id="card-gen-back" width="743" height="1038" style="outline:1px solid #000000;">
+					Canvas is not supported by your browser
+				</canvas>
+
+				<canvas id="card-gen-front" width="743" height="1038" style="outline:1px solid #000000;"></canvas>
+
+				<canvas id="card-gen-text" width="743" height="1038" style="outline:1px solid #000000;"></canvas>
+			</div>
+
 		</article>
 
 		<footer>
