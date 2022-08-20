@@ -94,12 +94,12 @@ function printAt(context, text, x, y, lineHeight, fitWidth) {
         context.fillText(text, x, y);
         return;
     }
-    for (var idx = 1; idx <= text.length; idx++) {
-        var str = text.substr(0, idx);
+    for (let idx = 1; idx <= text.length; idx++) {
+        let str = text.substr(0, idx);
         // console.log(str, context.measureText(str).width, fitWidth);
         if (context.measureText(str).width > fitWidth) {
             context.fillText( text.substr(0, idx-1), x, y );
-            printAt(context, text.substr(idx-1), x, y + lineHeight, lineHeight,  fitWidth);
+            printAt(context, text.substr(idx-1), x, y + lineHeight, lineHeight, fitWidth);
             return;
         }
     }
@@ -288,8 +288,14 @@ function modelCard() {
     if (cardType == "plan") {
         ctxText.font = "30px serif";
         ctxText.textAlign = "left";
-        printAt(ctxText, planTrigger, 40, 120, 35, 560)
-        // editing arguments
+
+        let fitWidth = 660;
+        let lineHeight = 35;
+
+        let planStrings = Math.ceil(ctxText.measureText(planTrigger).width / fitWidth);
+        let offsetPlan = (175 - lineHeight * planStrings) / 2;
+
+        printAt(ctxText, planTrigger, 40, 115+offsetPlan, lineHeight, fitWidth)
         // ctxText.fillText(planTrigger, 50, 200, 560);
         // HERE HERE HERE HERE HERE HERE HERE HERE HERE 
     }
